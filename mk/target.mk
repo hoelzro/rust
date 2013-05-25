@@ -62,6 +62,10 @@ $$(TLIB$(1)_T_$(2)_H_$(3))/$(CFG_RUSTLLVM_$(3)): \
 	@$$(call E, cp: $$@)
 	$$(Q)cp $$< $$@
 
+# This is the compile-time target-triple for the compiler. For the compiler at
+# runtime, this should be considered the host-triple. More explanation for why
+# this exists can be found on issue #2400
+$$(TLIB$(1)_T_$(2)_H_$(3))/$(CFG_LIBRUSTC_$(3)): export CFG_COMPILER_TRIPLE := $(2)
 $$(TLIB$(1)_T_$(2)_H_$(3))/$(CFG_LIBRUSTC_$(3)):		\
 		$$(COMPILER_CRATE) $$(COMPILER_INPUTS)		\
                 $$(TLIB$(1)_T_$(2)_H_$(3))/$(CFG_LIBSYNTAX_$(3)) \
