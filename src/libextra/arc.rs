@@ -507,7 +507,6 @@ mod tests {
     use core::prelude::*;
     use core::cell::Cell;
     use arc::*;
-    use arc;
 
     #[test]
     fn manually_share_arc() {
